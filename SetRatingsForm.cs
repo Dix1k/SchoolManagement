@@ -7,25 +7,61 @@ namespace SchoolManagement
     public partial class SetRatingsForm : Form
     {
         public Dictionary<string, int> Ratings { get; private set; }
+        private int studentClass; // Переменная для хранения класса ученика
 
-        public SetRatingsForm()
+        // Конструктор принимает таблицы студентов и классов
+        public SetRatingsForm(DataGridView dataGridStudents, DataGridView dataGridClasses)
         {
             InitializeComponent();
             Ratings = new Dictionary<string, int>();
+            this.studentClass = GetStudentClass(dataGridStudents); // Получаем класс ученика
+            LoadSubjectsFromDataGrid(dataGridClasses);
         }
-        private void btnAddSubject_Click(object sender, EventArgs e)
+
+        private int GetStudentClass(DataGridView dataGridStudents)
         {
-            string subject = txtSubject.Text.Trim();
-            if (!string.IsNullOrEmpty(subject) && !Ratings.ContainsKey(subject))
+            // Предполагаем, что выделенная строка содержит информацию о студенте
+            if (dataGridStudents.SelectedRows.Count > 0)
             {
-                Ratings[subject] = 0; // Инициализируем значение
-                UpdateSubjectList();
-                txtSubject.Clear();
+                var selectedRow = dataGridStudents.SelectedRows[0];
+                if (selectedRow.Cells["ClassNumber"].Value != null)
+                {
+                    string className = selectedRow.Cells["ClassNumber"].Value.ToString();
+                    // Извлекаем только числовую часть класса
+                    string numericPart = new string(className.Where(char.IsDigit).ToArray());
+                    if (int.TryParse(numericPart, out int classValue))
+                    {
+                        return classValue; // Возвращаем класс ученика
+                    }
+                }
             }
-            else
+            return -1; // Возвращаем -1, если класс не найден
+        }
+
+
+        private void LoadSubjectsFromDataGrid(DataGridView dataGridClasses)
+        {
+            foreach (DataGridViewRow row in dataGridClasses.Rows)
             {
-                MessageBox.Show("Введите корректное название предмета или предмет уже добавлен.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                if (row.Cells["ClassName"].Value != null &&
+                    int.TryParse(row.Cells["ClassName"].Value.ToString(), out int classValue) &&
+                    classValue == studentClass)
+                {
+                    // Предполагаем, что предметы записаны в ячейке "Subjects" через запятую
+                    string subjectsString = row.Cells["Subjects"].Value.ToString();
+                    string[] subjects = subjectsString.Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
+
+                    foreach (var subject in subjects)
+                    {
+                        string trimmedSubject = subject.Trim(); // Убираем лишние пробелы
+                        if (!Ratings.ContainsKey(trimmedSubject))
+                        {
+                            Ratings[trimmedSubject] = 0; // Инициализируем значение
+                        }
+                    }
+                }
             }
+            UpdateSubjectList();
         }
 
         private void UpdateSubjectList()

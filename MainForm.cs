@@ -231,7 +231,7 @@ namespace SchoolManagement
                 int selectedIndex = dataGridStudents.SelectedRows[0].Index;
                 Student selectedStudent = students[selectedIndex];
 
-                SetRatingsForm setRatingsForm = new SetRatingsForm();
+                SetRatingsForm setRatingsForm = new SetRatingsForm(dataGridStudents, dataGridClasses);
                 if (setRatingsForm.ShowDialog() == DialogResult.OK)
                 {
                     // Обновляем оценки ученика
