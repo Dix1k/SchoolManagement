@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
@@ -14,20 +13,43 @@ namespace SchoolManagement
     {
         public Teacher NewTeacher { get; private set; }
 
-        public AddTeacherForm()
+        public AddTeacherForm(DataGridView dataGridClasses)
         {
             InitializeComponent();
+            LoadSubjects(dataGridClasses);
+        }
+
+        private void LoadSubjects(DataGridView dataGridClasses)
+        {
+            var subjects = new HashSet<string>();
+
+            foreach (DataGridViewRow row in dataGridClasses.Rows)
+            {
+                if (row.Cells["Subjects"].Value != null)
+                {
+                    var subjectList = row.Cells["Subjects"].Value.ToString().Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
+                    foreach (var subject in subjectList)
+                    {
+                        subjects.Add(subject.Trim());
+                    }
+                }
+            }
+
+            // Заполнение списка предметов
+            lstSubjects.Items.AddRange(subjects.ToArray());
         }
 
         private void btnSave_Click(object sender, EventArgs e)
         {
             string fullName = txtFullName.Text.Trim();
             string roomNumber = numRoomNumber.Text;
-            List<string> subjects = lstSubjects.Items.Cast<string>().ToList();
+
+            // Получение выбранных предметов
+            List<string> subjects = lstSubjects.SelectedItems.Cast<string>().ToList();
 
             if (string.IsNullOrEmpty(fullName) || subjects.Count == 0)
             {
-                MessageBox.Show("Заполните все поля и добавьте хотя бы один предмет.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Заполните все поля и выберите хотя бы один предмет.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
@@ -37,20 +59,10 @@ namespace SchoolManagement
             this.Close();
         }
 
-
         private void btnAddSubject_Click(object sender, EventArgs e)
         {
-            string newSubject = txtNewSubject.Text.Trim();
-            if (!string.IsNullOrEmpty(newSubject) && !lstSubjects.Items.Contains(newSubject))
-            {
-                lstSubjects.Items.Add(newSubject);
-                txtNewSubject.Clear();
-            }
-            else
-            {
-                MessageBox.Show("Введите уникальный предмет.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
+            // Удалите этот метод, если больше не нужно добавлять предметы вручную
+            MessageBox.Show("Выберите предметы из списка.", "Информация", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
-
     }
 }

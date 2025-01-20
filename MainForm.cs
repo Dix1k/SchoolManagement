@@ -69,7 +69,7 @@ namespace SchoolManagement
 
         private void btnAddTeacher_Click(object sender, EventArgs e)
         {
-            AddTeacherForm addTeacherForm = new AddTeacherForm();
+            AddTeacherForm addTeacherForm = new AddTeacherForm(dataGridClasses);
             if (addTeacherForm.ShowDialog() == DialogResult.OK)
             {
                 if (addTeacherForm.NewTeacher != null)
