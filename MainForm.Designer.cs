@@ -33,15 +33,15 @@
             comboBoxSubjects = new ComboBox();
             btnAddClass = new Button();
             btnDeleteClass = new Button();
-            Id_students = new DataGridViewTextBoxColumn();
-            FirstName = new DataGridViewTextBoxColumn();
-            LastName = new DataGridViewTextBoxColumn();
-            Clas = new DataGridViewTextBoxColumn();
-            Grades = new DataGridViewTextBoxColumn();
             Id_teachers = new DataGridViewTextBoxColumn();
             FullName = new DataGridViewTextBoxColumn();
             Subjectses = new DataGridViewTextBoxColumn();
             RoomNumber = new DataGridViewTextBoxColumn();
+            Id_students = new DataGridViewTextBoxColumn();
+            FirstName = new DataGridViewTextBoxColumn();
+            LastName = new DataGridViewTextBoxColumn();
+            ClassNumber = new DataGridViewTextBoxColumn();
+            Grades = new DataGridViewTextBoxColumn();
             ClassName = new DataGridViewTextBoxColumn();
             Subjects = new DataGridViewTextBoxColumn();
             tabControl.SuspendLayout();
@@ -112,7 +112,7 @@
             dataGridStudents.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
             dataGridStudents.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
             dataGridStudents.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            dataGridStudents.Columns.AddRange(new DataGridViewColumn[] { Id_students, FirstName, LastName, Clas, Grades });
+            dataGridStudents.Columns.AddRange(new DataGridViewColumn[] { Id_students, FirstName, LastName, ClassNumber, Grades });
             dataGridStudents.Dock = DockStyle.Fill;
             dataGridStudents.EnableHeadersVisualStyles = false;
             dataGridStudents.Location = new Point(0, 0);
@@ -255,41 +255,6 @@
             btnDeleteClass.UseVisualStyleBackColor = true;
             btnDeleteClass.Click += btnDeleteClass_Click;
             // 
-            // Id_students
-            // 
-            Id_students.HeaderText = "id";
-            Id_students.Name = "Id_students";
-            Id_students.ReadOnly = true;
-            Id_students.Width = 42;
-            // 
-            // FirstName
-            // 
-            FirstName.HeaderText = "First Name";
-            FirstName.Name = "FirstName";
-            FirstName.ReadOnly = true;
-            FirstName.Width = 89;
-            // 
-            // LastName
-            // 
-            LastName.HeaderText = "Last Name";
-            LastName.Name = "LastName";
-            LastName.ReadOnly = true;
-            LastName.Width = 88;
-            // 
-            // Clas
-            // 
-            Clas.HeaderText = "Class";
-            Clas.Name = "Clas";
-            Clas.ReadOnly = true;
-            Clas.Width = 59;
-            // 
-            // Grades
-            // 
-            Grades.HeaderText = "Grades";
-            Grades.Name = "Grades";
-            Grades.ReadOnly = true;
-            Grades.Width = 68;
-            // 
             // Id_teachers
             // 
             Id_teachers.HeaderText = "id";
@@ -299,38 +264,73 @@
             // 
             // FullName
             // 
-            FullName.HeaderText = "Full Name";
+            FullName.HeaderText = "ФИО";
             FullName.Name = "FullName";
             FullName.ReadOnly = true;
-            FullName.Width = 86;
+            FullName.Width = 59;
             // 
             // Subjectses
             // 
-            Subjectses.HeaderText = "Subjects";
+            Subjectses.HeaderText = "Предметы";
             Subjectses.Name = "Subjectses";
             Subjectses.ReadOnly = true;
-            Subjectses.Width = 76;
+            Subjectses.Width = 89;
             // 
             // RoomNumber
             // 
-            RoomNumber.HeaderText = "Room Number";
+            RoomNumber.HeaderText = "Номер кабинета";
             RoomNumber.Name = "RoomNumber";
             RoomNumber.ReadOnly = true;
-            RoomNumber.Width = 111;
+            RoomNumber.Width = 123;
+            // 
+            // Id_students
+            // 
+            Id_students.HeaderText = "id";
+            Id_students.Name = "Id_students";
+            Id_students.ReadOnly = true;
+            Id_students.Width = 42;
+            // 
+            // FirstName
+            // 
+            FirstName.HeaderText = "Имя";
+            FirstName.Name = "FirstName";
+            FirstName.ReadOnly = true;
+            FirstName.Width = 56;
+            // 
+            // LastName
+            // 
+            LastName.HeaderText = "Фамилия";
+            LastName.Name = "LastName";
+            LastName.ReadOnly = true;
+            LastName.Width = 83;
+            // 
+            // ClassNumber
+            // 
+            ClassNumber.HeaderText = "Класс";
+            ClassNumber.Name = "ClassNumber";
+            ClassNumber.ReadOnly = true;
+            ClassNumber.Width = 64;
+            // 
+            // Grades
+            // 
+            Grades.HeaderText = "Оценки";
+            Grades.Name = "Grades";
+            Grades.ReadOnly = true;
+            Grades.Width = 74;
             // 
             // ClassName
             // 
-            ClassName.HeaderText = "Class";
+            ClassName.HeaderText = "Класс";
             ClassName.Name = "ClassName";
             ClassName.ReadOnly = true;
-            ClassName.Width = 59;
+            ClassName.Width = 64;
             // 
             // Subjects
             // 
-            Subjects.HeaderText = "Subjects";
+            Subjects.HeaderText = "Предметы";
             Subjects.Name = "Subjects";
             Subjects.ReadOnly = true;
-            Subjects.Width = 76;
+            Subjects.Width = 89;
             // 
             // MainForm
             // 
@@ -379,15 +379,15 @@
         private DataGridView dataGridClasses;
         private Button btnAddClass;
         private Button btnDeleteClass;
-        private DataGridViewTextBoxColumn Id_students;
-        private DataGridViewTextBoxColumn FirstName;
-        private DataGridViewTextBoxColumn LastName;
-        private DataGridViewTextBoxColumn Clas;
-        private DataGridViewTextBoxColumn Grades;
         private DataGridViewTextBoxColumn Id_teachers;
         private DataGridViewTextBoxColumn FullName;
         private DataGridViewTextBoxColumn Subjectses;
         private DataGridViewTextBoxColumn RoomNumber;
+        private DataGridViewTextBoxColumn Id_students;
+        private DataGridViewTextBoxColumn FirstName;
+        private DataGridViewTextBoxColumn LastName;
+        private DataGridViewTextBoxColumn ClassNumber;
+        private DataGridViewTextBoxColumn Grades;
         private DataGridViewTextBoxColumn ClassName;
         private DataGridViewTextBoxColumn Subjects;
     }

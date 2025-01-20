@@ -87,12 +87,25 @@ namespace SchoolManagement
 
         private void btnAddStudent_Click(object sender, EventArgs e)
         {
-            AddStudentForm addStudentForm = new AddStudentForm();
-            if (addStudentForm.ShowDialog() == DialogResult.OK)
+            // Предположим, что у вас есть DataGridView с классами
+            List<string> classes = new List<string>();
+
+            foreach (DataGridViewRow row in dataGridClasses.Rows)
             {
-                students.Add(addStudentForm.NewStudent);
-                UpdateStudentGrid();
-                btnSaveData_Click(sender, e); // Сохранение данных после добавления
+                if (row.Cells["ClassName"].Value != null)
+                {
+                    classes.Add(row.Cells["ClassName"].Value.ToString());
+                }
+            }
+
+            using (AddStudentForm addStudentForm = new AddStudentForm(classes))
+            {
+                if (addStudentForm.ShowDialog() == DialogResult.OK)
+                {
+                    students.Add(addStudentForm.NewStudent);
+                    UpdateStudentGrid();
+                    btnSaveData_Click(sender, e); // Сохранение данных после добавления
+                }
             }
         }
 

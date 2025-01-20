@@ -17,8 +17,9 @@
         {
             txtFirstName = new TextBox();
             txtLastName = new TextBox();
-            txtClass = new TextBox();
+            txtClassLetter = new TextBox();
             btnSave = new Button();
+            comboBoxClasses = new ComboBox();
             SuspendLayout();
             // 
             // txtFirstName
@@ -37,13 +38,13 @@
             txtLastName.Size = new Size(200, 23);
             txtLastName.TabIndex = 1;
             // 
-            // txtClass
+            // txtClassLetter
             // 
-            txtClass.Location = new Point(10, 70);
-            txtClass.Name = "txtClass";
-            txtClass.PlaceholderText = "Класс";
-            txtClass.Size = new Size(200, 23);
-            txtClass.TabIndex = 2;
+            txtClassLetter.Location = new Point(144, 70);
+            txtClassLetter.Name = "txtClassLetter";
+            txtClassLetter.PlaceholderText = "Буква";
+            txtClassLetter.Size = new Size(66, 23);
+            txtClassLetter.TabIndex = 2;
             // 
             // btnSave
             // 
@@ -54,12 +55,21 @@
             btnSave.Text = "Сохранить";
             btnSave.Click += btnSave_Click;
             // 
+            // comboBoxClasses
+            // 
+            comboBoxClasses.FormattingEnabled = true;
+            comboBoxClasses.Location = new Point(10, 69);
+            comboBoxClasses.Name = "comboBoxClasses";
+            comboBoxClasses.Size = new Size(121, 23);
+            comboBoxClasses.TabIndex = 4;
+            // 
             // AddStudentForm
             // 
             ClientSize = new Size(231, 125);
+            Controls.Add(comboBoxClasses);
             Controls.Add(txtFirstName);
             Controls.Add(txtLastName);
-            Controls.Add(txtClass);
+            Controls.Add(txtClassLetter);
             Controls.Add(btnSave);
             Name = "AddStudentForm";
             StartPosition = FormStartPosition.CenterScreen;
@@ -70,7 +80,8 @@
 
         private System.Windows.Forms.TextBox txtFirstName;
         private System.Windows.Forms.TextBox txtLastName;
-        private System.Windows.Forms.TextBox txtClass;
+        private System.Windows.Forms.TextBox txtClassLetter;
         private System.Windows.Forms.Button btnSave;
+        private ComboBox comboBoxClasses;
     }
 }
