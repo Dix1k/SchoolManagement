@@ -56,10 +56,14 @@ namespace SchoolManagement
         }
         private void UpdateClassesGrid()
         {
-            dataGridClasses.Rows.Clear();
+            dataGridClasses.Rows.Clear(); // Очистка текущих данных в гриде классов
             foreach (SchoolClass schoolClass in schoolClasses)
             {
-                dataGridStudents.Rows.Add(schoolClass.ClassName, schoolClass.Subjects);
+                if (schoolClass != null)
+                {
+                    string subjects = string.Join(", ", schoolClass.Subjects);
+                    dataGridClasses.Rows.Add(schoolClass.ClassName, subjects);
+                }
             }
         }
 
@@ -72,6 +76,7 @@ namespace SchoolManagement
                 {
                     teachers.Add(addTeacherForm.NewTeacher);
                     UpdateTeacherGrid();
+                    btnSaveData_Click(sender, e); // Сохранение данных после добавления
                 }
                 else
                 {
@@ -82,39 +87,48 @@ namespace SchoolManagement
 
         private void btnAddStudent_Click(object sender, EventArgs e)
         {
-            var addStudentForm = new AddStudentForm();
+            AddStudentForm addStudentForm = new AddStudentForm();
             if (addStudentForm.ShowDialog() == DialogResult.OK)
             {
                 students.Add(addStudentForm.NewStudent);
                 UpdateStudentGrid();
+                btnSaveData_Click(sender, e); // Сохранение данных после добавления
             }
         }
 
         private void btnAddClass_Click(object sender, EventArgs e)
         {
-            var addClassesForm = new AddClassesForm();
+            AddClassesForm addClassesForm = new AddClassesForm();
             if (addClassesForm.ShowDialog() == DialogResult.OK)
             {
                 schoolClasses.Add(addClassesForm.NewClasses);
                 UpdateClassesGrid();
+                btnSaveData_Click(sender, e); // Сохранение данных после добавления
             }
         }
+
+
+
 
         private void btnDeleteTeacher_Click(object sender, EventArgs e)
         {
             if (dataGridTeachers.SelectedRows.Count > 0)
             {
-                // Запрашиваем подтверждение удаления
                 var result = MessageBox.Show("Вы уверены, что хотите удалить этого учителя?", "Подтверждение удаления", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
                 if (result == DialogResult.Yes)
                 {
-                    // Получаем индекс выделенной строки
                     int selectedIndex = dataGridTeachers.SelectedRows[0].Index;
 
-                    // Удаляем учителя из списка по индексу
-                    teachers.RemoveAt(selectedIndex);
-                    UpdateTeacherGrid();
+                    if (selectedIndex >= 0 && selectedIndex < teachers.Count)
+                    {
+                        teachers.RemoveAt(selectedIndex);
+                        UpdateTeacherGrid();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Ошибка: выбранный индекс недействителен.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
             }
             else
@@ -123,21 +137,26 @@ namespace SchoolManagement
             }
         }
 
+
         private void btnDeleteStudent_Click(object sender, EventArgs e)
         {
             if (dataGridStudents.SelectedRows.Count > 0)
             {
-                // Запрашиваем подтверждение удаления
                 var result = MessageBox.Show("Вы уверены, что хотите удалить этого студента?", "Подтверждение удаления", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
                 if (result == DialogResult.Yes)
                 {
-                    // Получаем индекс выделенной строки
                     int selectedIndex = dataGridStudents.SelectedRows[0].Index;
 
-                    // Удаляем студента из списка по индексу
-                    students.RemoveAt(selectedIndex);
-                    UpdateStudentGrid();
+                    if (selectedIndex >= 0 && selectedIndex < students.Count)
+                    {
+                        students.RemoveAt(selectedIndex);
+                        UpdateStudentGrid();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Ошибка: выбранный индекс недействителен.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
             }
             else
@@ -146,27 +165,34 @@ namespace SchoolManagement
             }
         }
 
+
         private void btnDeleteClass_Click(object sender, EventArgs e)
         {
             if (dataGridClasses.SelectedRows.Count > 0)
             {
-                var result = MessageBox.Show("Вы уверены, что хотите удалить этого студента?", "Подтверждение удаления", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                var result = MessageBox.Show("Вы уверены, что хотите удалить этот класс?", "Подтверждение удаления", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
                 if (result == DialogResult.Yes)
                 {
-                    // Получаем индекс выделенной строки
                     int selectedIndex = dataGridClasses.SelectedRows[0].Index;
 
-                    // Удаляем студента из списка по индексу
-                    schoolClasses.RemoveAt(selectedIndex);
-                    UpdateClassesGrid();
-                }
-                else
-                {
-                    MessageBox.Show("Пожалуйста, выберите класс для удаления.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    if (selectedIndex >= 0 && selectedIndex < schoolClasses.Count)
+                    {
+                        schoolClasses.RemoveAt(selectedIndex);
+                        UpdateClassesGrid();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Ошибка: выбранный индекс недействителен.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
             }
+            else
+            {
+                MessageBox.Show("Пожалуйста, выберите класс для удаления.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
+
 
         private void btnSaveData_Click(object sender, EventArgs e)
         {
@@ -181,8 +207,8 @@ namespace SchoolManagement
             LoadData(); // Вызов метода загрузки данных
             UpdateTeacherGrid();
             UpdateStudentGrid();
-            UpdateClassesGrid();
-            MessageBox.Show("Данные успешно обновлениы!", "Обновление", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            UpdateClassesGrid(); // Обновление грида классов
+            MessageBox.Show("Данные успешно обновлены!", "Обновление", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void btnSetRatings_Click(object sender, EventArgs e)

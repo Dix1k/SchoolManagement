@@ -18,21 +18,10 @@
             tabControl = new TabControl();
             tabTeachers = new TabPage();
             dataGridTeachers = new DataGridView();
-            Id_teachers = new DataGridViewTextBoxColumn();
-            FullName = new DataGridViewTextBoxColumn();
-            Subjects = new DataGridViewTextBoxColumn();
-            RoomNumber = new DataGridViewTextBoxColumn();
             tabStudents = new TabPage();
             dataGridStudents = new DataGridView();
-            Id_students = new DataGridViewTextBoxColumn();
-            FirstName = new DataGridViewTextBoxColumn();
-            LastName = new DataGridViewTextBoxColumn();
-            ClassName = new DataGridViewTextBoxColumn();
-            Grades = new DataGridViewTextBoxColumn();
             tabClasses = new TabPage();
             dataGridClasses = new DataGridView();
-            Class = new DataGridViewTextBoxColumn();
-            Subjects_class = new DataGridViewTextBoxColumn();
             btnAddTeacher = new Button();
             btnDeleteTeacher = new Button();
             btnAddStudent = new Button();
@@ -44,6 +33,17 @@
             comboBoxSubjects = new ComboBox();
             btnAddClass = new Button();
             btnDeleteClass = new Button();
+            Id_students = new DataGridViewTextBoxColumn();
+            FirstName = new DataGridViewTextBoxColumn();
+            LastName = new DataGridViewTextBoxColumn();
+            Clas = new DataGridViewTextBoxColumn();
+            Grades = new DataGridViewTextBoxColumn();
+            Id_teachers = new DataGridViewTextBoxColumn();
+            FullName = new DataGridViewTextBoxColumn();
+            Subjectses = new DataGridViewTextBoxColumn();
+            RoomNumber = new DataGridViewTextBoxColumn();
+            ClassName = new DataGridViewTextBoxColumn();
+            Subjects = new DataGridViewTextBoxColumn();
             tabControl.SuspendLayout();
             tabTeachers.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridTeachers).BeginInit();
@@ -83,7 +83,7 @@
             dataGridTeachers.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
             dataGridTeachers.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
             dataGridTeachers.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            dataGridTeachers.Columns.AddRange(new DataGridViewColumn[] { Id_teachers, FullName, Subjects, RoomNumber });
+            dataGridTeachers.Columns.AddRange(new DataGridViewColumn[] { Id_teachers, FullName, Subjectses, RoomNumber });
             dataGridTeachers.Dock = DockStyle.Fill;
             dataGridTeachers.EnableHeadersVisualStyles = false;
             dataGridTeachers.Location = new Point(0, 0);
@@ -93,34 +93,6 @@
             dataGridTeachers.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dataGridTeachers.Size = new Size(853, 372);
             dataGridTeachers.TabIndex = 0;
-            // 
-            // Id_teachers
-            // 
-            Id_teachers.HeaderText = "id";
-            Id_teachers.Name = "Id_teachers";
-            Id_teachers.ReadOnly = true;
-            Id_teachers.Width = 42;
-            // 
-            // FullName
-            // 
-            FullName.HeaderText = "Full Name";
-            FullName.Name = "FullName";
-            FullName.ReadOnly = true;
-            FullName.Width = 86;
-            // 
-            // Subjects
-            // 
-            Subjects.HeaderText = "Subjects";
-            Subjects.Name = "Subjects";
-            Subjects.ReadOnly = true;
-            Subjects.Width = 76;
-            // 
-            // RoomNumber
-            // 
-            RoomNumber.HeaderText = "Room Number";
-            RoomNumber.Name = "RoomNumber";
-            RoomNumber.ReadOnly = true;
-            RoomNumber.Width = 111;
             // 
             // tabStudents
             // 
@@ -140,7 +112,7 @@
             dataGridStudents.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
             dataGridStudents.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
             dataGridStudents.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            dataGridStudents.Columns.AddRange(new DataGridViewColumn[] { Id_students, FirstName, LastName, ClassName, Grades });
+            dataGridStudents.Columns.AddRange(new DataGridViewColumn[] { Id_students, FirstName, LastName, Clas, Grades });
             dataGridStudents.Dock = DockStyle.Fill;
             dataGridStudents.EnableHeadersVisualStyles = false;
             dataGridStudents.Location = new Point(0, 0);
@@ -148,43 +120,9 @@
             dataGridStudents.ReadOnly = true;
             dataGridStudents.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             dataGridStudents.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dataGridStudents.ShowEditingIcon = false;
             dataGridStudents.Size = new Size(853, 372);
             dataGridStudents.TabIndex = 0;
-            // 
-            // Id_students
-            // 
-            Id_students.HeaderText = "id";
-            Id_students.Name = "Id_students";
-            Id_students.ReadOnly = true;
-            Id_students.Width = 42;
-            // 
-            // FirstName
-            // 
-            FirstName.HeaderText = "First Name";
-            FirstName.Name = "FirstName";
-            FirstName.ReadOnly = true;
-            FirstName.Width = 89;
-            // 
-            // LastName
-            // 
-            LastName.HeaderText = "Last Name";
-            LastName.Name = "LastName";
-            LastName.ReadOnly = true;
-            LastName.Width = 88;
-            // 
-            // ClassName
-            // 
-            ClassName.HeaderText = "Class";
-            ClassName.Name = "ClassName";
-            ClassName.ReadOnly = true;
-            ClassName.Width = 59;
-            // 
-            // Grades
-            // 
-            Grades.HeaderText = "Grades";
-            Grades.Name = "Grades";
-            Grades.ReadOnly = true;
-            Grades.Width = 68;
             // 
             // tabClasses
             // 
@@ -205,7 +143,7 @@
             dataGridClasses.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
             dataGridClasses.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
             dataGridClasses.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            dataGridClasses.Columns.AddRange(new DataGridViewColumn[] { Class, Subjects_class });
+            dataGridClasses.Columns.AddRange(new DataGridViewColumn[] { ClassName, Subjects });
             dataGridClasses.Dock = DockStyle.Fill;
             dataGridClasses.Location = new Point(0, 0);
             dataGridClasses.Name = "dataGridClasses";
@@ -214,20 +152,6 @@
             dataGridClasses.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dataGridClasses.Size = new Size(853, 372);
             dataGridClasses.TabIndex = 0;
-            // 
-            // Class
-            // 
-            Class.HeaderText = "Class";
-            Class.Name = "Class";
-            Class.ReadOnly = true;
-            Class.Width = 59;
-            // 
-            // Subjects_class
-            // 
-            Subjects_class.HeaderText = "Subjects";
-            Subjects_class.Name = "Subjects_class";
-            Subjects_class.ReadOnly = true;
-            Subjects_class.Width = 76;
             // 
             // btnAddTeacher
             // 
@@ -331,6 +255,83 @@
             btnDeleteClass.UseVisualStyleBackColor = true;
             btnDeleteClass.Click += btnDeleteClass_Click;
             // 
+            // Id_students
+            // 
+            Id_students.HeaderText = "id";
+            Id_students.Name = "Id_students";
+            Id_students.ReadOnly = true;
+            Id_students.Width = 42;
+            // 
+            // FirstName
+            // 
+            FirstName.HeaderText = "First Name";
+            FirstName.Name = "FirstName";
+            FirstName.ReadOnly = true;
+            FirstName.Width = 89;
+            // 
+            // LastName
+            // 
+            LastName.HeaderText = "Last Name";
+            LastName.Name = "LastName";
+            LastName.ReadOnly = true;
+            LastName.Width = 88;
+            // 
+            // Clas
+            // 
+            Clas.HeaderText = "Class";
+            Clas.Name = "Clas";
+            Clas.ReadOnly = true;
+            Clas.Width = 59;
+            // 
+            // Grades
+            // 
+            Grades.HeaderText = "Grades";
+            Grades.Name = "Grades";
+            Grades.ReadOnly = true;
+            Grades.Width = 68;
+            // 
+            // Id_teachers
+            // 
+            Id_teachers.HeaderText = "id";
+            Id_teachers.Name = "Id_teachers";
+            Id_teachers.ReadOnly = true;
+            Id_teachers.Width = 42;
+            // 
+            // FullName
+            // 
+            FullName.HeaderText = "Full Name";
+            FullName.Name = "FullName";
+            FullName.ReadOnly = true;
+            FullName.Width = 86;
+            // 
+            // Subjectses
+            // 
+            Subjectses.HeaderText = "Subjects";
+            Subjectses.Name = "Subjectses";
+            Subjectses.ReadOnly = true;
+            Subjectses.Width = 76;
+            // 
+            // RoomNumber
+            // 
+            RoomNumber.HeaderText = "Room Number";
+            RoomNumber.Name = "RoomNumber";
+            RoomNumber.ReadOnly = true;
+            RoomNumber.Width = 111;
+            // 
+            // ClassName
+            // 
+            ClassName.HeaderText = "Class";
+            ClassName.Name = "ClassName";
+            ClassName.ReadOnly = true;
+            ClassName.Width = 59;
+            // 
+            // Subjects
+            // 
+            Subjects.HeaderText = "Subjects";
+            Subjects.Name = "Subjects";
+            Subjects.ReadOnly = true;
+            Subjects.Width = 76;
+            // 
             // MainForm
             // 
             ClientSize = new Size(861, 711);
@@ -371,23 +372,23 @@
         private System.Windows.Forms.Button btnDeleteStudent;
         private System.Windows.Forms.Button btnSaveData;
         private System.Windows.Forms.Button btnLoadData;
-        private DataGridViewTextBoxColumn Id_teachers;
-        private DataGridViewTextBoxColumn FullName;
-        private DataGridViewTextBoxColumn Subjects;
-        private DataGridViewTextBoxColumn RoomNumber;
-        private DataGridViewTextBoxColumn Id_students;
-        private DataGridViewTextBoxColumn FirstName;
-        private DataGridViewTextBoxColumn LastName;
-        private DataGridViewTextBoxColumn ClassName;
-        private DataGridViewTextBoxColumn Grades;
         private Button btnSetRatings;
         private Button btnRequest1;
         private ComboBox comboBoxSubjects;
         private TabPage tabClasses;
         private DataGridView dataGridClasses;
-        private DataGridViewTextBoxColumn Class;
-        private DataGridViewTextBoxColumn Subjects_class;
         private Button btnAddClass;
         private Button btnDeleteClass;
+        private DataGridViewTextBoxColumn Id_students;
+        private DataGridViewTextBoxColumn FirstName;
+        private DataGridViewTextBoxColumn LastName;
+        private DataGridViewTextBoxColumn Clas;
+        private DataGridViewTextBoxColumn Grades;
+        private DataGridViewTextBoxColumn Id_teachers;
+        private DataGridViewTextBoxColumn FullName;
+        private DataGridViewTextBoxColumn Subjectses;
+        private DataGridViewTextBoxColumn RoomNumber;
+        private DataGridViewTextBoxColumn ClassName;
+        private DataGridViewTextBoxColumn Subjects;
     }
 }

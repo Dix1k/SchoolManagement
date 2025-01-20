@@ -8,19 +8,13 @@ namespace SchoolManagement
 {
     public class SchoolClass
     {
-        public string ClassName { get; set; } // Название класса
-        public List<string> Subjects { get; set; } // Список предметов
+        public string ClassName { get; set; }
+        public List<string> Subjects { get; set; }
 
-        public SchoolClass(string className)
+        public SchoolClass(string className, List<string> subjects)
         {
             ClassName = className;
-            Subjects = new List<string>();
-        }
-
-        // Метод для добавления предмета
-        public void AddSubject(string subject)
-        {
-            Subjects.Add(subject);
+            Subjects = subjects;
         }
     }
 }
