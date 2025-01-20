@@ -56,7 +56,7 @@ namespace SchoolManagement
         }
         private void UpdateClassesGrid()
         {
-            dataGridClasses.Rows.Clear(); // Очистка текущих данных в гриде классов
+            dataGridClasses.Rows.Clear();
             foreach (SchoolClass schoolClass in schoolClasses)
             {
                 if (schoolClass != null)
@@ -76,7 +76,7 @@ namespace SchoolManagement
                 {
                     teachers.Add(addTeacherForm.NewTeacher);
                     UpdateTeacherGrid();
-                    btnSaveData_Click(sender, e); // Сохранение данных после добавления
+                    btnSaveData_Click(sender, e);
                 }
                 else
                 {
@@ -87,7 +87,6 @@ namespace SchoolManagement
 
         private void btnAddStudent_Click(object sender, EventArgs e)
         {
-            // Предположим, что у вас есть DataGridView с классами
             List<string> classes = new List<string>();
 
             foreach (DataGridViewRow row in dataGridClasses.Rows)
@@ -104,7 +103,7 @@ namespace SchoolManagement
                 {
                     students.Add(addStudentForm.NewStudent);
                     UpdateStudentGrid();
-                    btnSaveData_Click(sender, e); // Сохранение данных после добавления
+                    btnSaveData_Click(sender, e);
                 }
             }
         }
@@ -116,12 +115,9 @@ namespace SchoolManagement
             {
                 schoolClasses.Add(addClassesForm.NewClasses);
                 UpdateClassesGrid();
-                btnSaveData_Click(sender, e); // Сохранение данных после добавления
+                btnSaveData_Click(sender, e);
             }
         }
-
-
-
 
         private void btnDeleteTeacher_Click(object sender, EventArgs e)
         {
@@ -150,7 +146,6 @@ namespace SchoolManagement
             }
         }
 
-
         private void btnDeleteStudent_Click(object sender, EventArgs e)
         {
             if (dataGridStudents.SelectedRows.Count > 0)
@@ -177,7 +172,6 @@ namespace SchoolManagement
                 MessageBox.Show("Пожалуйста, выберите студента для удаления.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
-
 
         private void btnDeleteClass_Click(object sender, EventArgs e)
         {
@@ -206,7 +200,6 @@ namespace SchoolManagement
             }
         }
 
-
         private void btnSaveData_Click(object sender, EventArgs e)
         {
             Serializer.SerializeToFile("teachers.json", teachers);
@@ -220,7 +213,7 @@ namespace SchoolManagement
             LoadData(); // Вызов метода загрузки данных
             UpdateTeacherGrid();
             UpdateStudentGrid();
-            UpdateClassesGrid(); // Обновление грида классов
+            UpdateClassesGrid();
             MessageBox.Show("Данные успешно обновлены!", "Обновление", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
@@ -246,6 +239,31 @@ namespace SchoolManagement
         }
 
         private void btnRequest1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnRequest2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnRequest3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnRequest4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnRequest5_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnRequest6_Click(object sender, EventArgs e)
         {
 
         }

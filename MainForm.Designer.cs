@@ -18,10 +18,21 @@
             tabControl = new TabControl();
             tabTeachers = new TabPage();
             dataGridTeachers = new DataGridView();
+            Id_teachers = new DataGridViewTextBoxColumn();
+            FullName = new DataGridViewTextBoxColumn();
+            Subjectses = new DataGridViewTextBoxColumn();
+            RoomNumber = new DataGridViewTextBoxColumn();
             tabStudents = new TabPage();
             dataGridStudents = new DataGridView();
+            Id_students = new DataGridViewTextBoxColumn();
+            FirstName = new DataGridViewTextBoxColumn();
+            LastName = new DataGridViewTextBoxColumn();
+            ClassNumber = new DataGridViewTextBoxColumn();
+            Grades = new DataGridViewTextBoxColumn();
             tabClasses = new TabPage();
             dataGridClasses = new DataGridView();
+            ClassName = new DataGridViewTextBoxColumn();
+            Subjects = new DataGridViewTextBoxColumn();
             btnAddTeacher = new Button();
             btnDeleteTeacher = new Button();
             btnAddStudent = new Button();
@@ -33,17 +44,11 @@
             comboBoxSubjects = new ComboBox();
             btnAddClass = new Button();
             btnDeleteClass = new Button();
-            Id_teachers = new DataGridViewTextBoxColumn();
-            FullName = new DataGridViewTextBoxColumn();
-            Subjectses = new DataGridViewTextBoxColumn();
-            RoomNumber = new DataGridViewTextBoxColumn();
-            Id_students = new DataGridViewTextBoxColumn();
-            FirstName = new DataGridViewTextBoxColumn();
-            LastName = new DataGridViewTextBoxColumn();
-            ClassNumber = new DataGridViewTextBoxColumn();
-            Grades = new DataGridViewTextBoxColumn();
-            ClassName = new DataGridViewTextBoxColumn();
-            Subjects = new DataGridViewTextBoxColumn();
+            btnRequest2 = new Button();
+            btnRequest3 = new Button();
+            btnRequest4 = new Button();
+            btnRequest5 = new Button();
+            btnRequest6 = new Button();
             tabControl.SuspendLayout();
             tabTeachers.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridTeachers).BeginInit();
@@ -94,6 +99,34 @@
             dataGridTeachers.Size = new Size(853, 372);
             dataGridTeachers.TabIndex = 0;
             // 
+            // Id_teachers
+            // 
+            Id_teachers.HeaderText = "id";
+            Id_teachers.Name = "Id_teachers";
+            Id_teachers.ReadOnly = true;
+            Id_teachers.Width = 42;
+            // 
+            // FullName
+            // 
+            FullName.HeaderText = "ФИО";
+            FullName.Name = "FullName";
+            FullName.ReadOnly = true;
+            FullName.Width = 59;
+            // 
+            // Subjectses
+            // 
+            Subjectses.HeaderText = "Предметы";
+            Subjectses.Name = "Subjectses";
+            Subjectses.ReadOnly = true;
+            Subjectses.Width = 89;
+            // 
+            // RoomNumber
+            // 
+            RoomNumber.HeaderText = "Номер кабинета";
+            RoomNumber.Name = "RoomNumber";
+            RoomNumber.ReadOnly = true;
+            RoomNumber.Width = 123;
+            // 
             // tabStudents
             // 
             tabStudents.Controls.Add(dataGridStudents);
@@ -124,6 +157,41 @@
             dataGridStudents.Size = new Size(853, 372);
             dataGridStudents.TabIndex = 0;
             // 
+            // Id_students
+            // 
+            Id_students.HeaderText = "id";
+            Id_students.Name = "Id_students";
+            Id_students.ReadOnly = true;
+            Id_students.Width = 42;
+            // 
+            // FirstName
+            // 
+            FirstName.HeaderText = "Имя";
+            FirstName.Name = "FirstName";
+            FirstName.ReadOnly = true;
+            FirstName.Width = 56;
+            // 
+            // LastName
+            // 
+            LastName.HeaderText = "Фамилия";
+            LastName.Name = "LastName";
+            LastName.ReadOnly = true;
+            LastName.Width = 83;
+            // 
+            // ClassNumber
+            // 
+            ClassNumber.HeaderText = "Класс";
+            ClassNumber.Name = "ClassNumber";
+            ClassNumber.ReadOnly = true;
+            ClassNumber.Width = 64;
+            // 
+            // Grades
+            // 
+            Grades.HeaderText = "Оценки";
+            Grades.Name = "Grades";
+            Grades.ReadOnly = true;
+            Grades.Width = 74;
+            // 
             // tabClasses
             // 
             tabClasses.Controls.Add(dataGridClasses);
@@ -152,6 +220,20 @@
             dataGridClasses.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dataGridClasses.Size = new Size(853, 372);
             dataGridClasses.TabIndex = 0;
+            // 
+            // ClassName
+            // 
+            ClassName.HeaderText = "Класс";
+            ClassName.Name = "ClassName";
+            ClassName.ReadOnly = true;
+            ClassName.Width = 64;
+            // 
+            // Subjects
+            // 
+            Subjects.HeaderText = "Предметы";
+            Subjects.Name = "Subjects";
+            Subjects.ReadOnly = true;
+            Subjects.Width = 89;
             // 
             // btnAddTeacher
             // 
@@ -219,7 +301,7 @@
             // 
             // btnRequest1
             // 
-            btnRequest1.Location = new Point(372, 533);
+            btnRequest1.Location = new Point(423, 546);
             btnRequest1.Name = "btnRequest1";
             btnRequest1.Size = new Size(252, 23);
             btnRequest1.TabIndex = 8;
@@ -230,7 +312,7 @@
             // comboBoxSubjects
             // 
             comboBoxSubjects.FormattingEnabled = true;
-            comboBoxSubjects.Location = new Point(630, 533);
+            comboBoxSubjects.Location = new Point(681, 547);
             comboBoxSubjects.Name = "comboBoxSubjects";
             comboBoxSubjects.Size = new Size(121, 23);
             comboBoxSubjects.TabIndex = 9;
@@ -255,86 +337,64 @@
             btnDeleteClass.UseVisualStyleBackColor = true;
             btnDeleteClass.Click += btnDeleteClass_Click;
             // 
-            // Id_teachers
+            // btnRequest2
             // 
-            Id_teachers.HeaderText = "id";
-            Id_teachers.Name = "Id_teachers";
-            Id_teachers.ReadOnly = true;
-            Id_teachers.Width = 42;
+            btnRequest2.Location = new Point(12, 546);
+            btnRequest2.Name = "btnRequest2";
+            btnRequest2.Size = new Size(377, 23);
+            btnRequest2.TabIndex = 12;
+            btnRequest2.Text = "Количество неуспевающих учеников по всем классам";
+            btnRequest2.UseVisualStyleBackColor = true;
+            btnRequest2.Click += btnRequest2_Click;
             // 
-            // FullName
+            // btnRequest3
             // 
-            FullName.HeaderText = "ФИО";
-            FullName.Name = "FullName";
-            FullName.ReadOnly = true;
-            FullName.Width = 59;
+            btnRequest3.Location = new Point(12, 575);
+            btnRequest3.Name = "btnRequest3";
+            btnRequest3.Size = new Size(377, 23);
+            btnRequest3.TabIndex = 13;
+            btnRequest3.Text = "У какого учителя самая низкая успеваемость";
+            btnRequest3.UseVisualStyleBackColor = true;
+            btnRequest3.Click += btnRequest3_Click;
             // 
-            // Subjectses
+            // btnRequest4
             // 
-            Subjectses.HeaderText = "Предметы";
-            Subjectses.Name = "Subjectses";
-            Subjectses.ReadOnly = true;
-            Subjectses.Width = 89;
+            btnRequest4.Location = new Point(12, 604);
+            btnRequest4.Name = "btnRequest4";
+            btnRequest4.Size = new Size(377, 23);
+            btnRequest4.TabIndex = 14;
+            btnRequest4.Text = "Средняя оценка по всем предметам в каждом классе";
+            btnRequest4.UseVisualStyleBackColor = true;
+            btnRequest4.Click += btnRequest4_Click;
             // 
-            // RoomNumber
+            // btnRequest5
             // 
-            RoomNumber.HeaderText = "Номер кабинета";
-            RoomNumber.Name = "RoomNumber";
-            RoomNumber.ReadOnly = true;
-            RoomNumber.Width = 123;
+            btnRequest5.Location = new Point(12, 633);
+            btnRequest5.Name = "btnRequest5";
+            btnRequest5.Size = new Size(377, 23);
+            btnRequest5.TabIndex = 15;
+            btnRequest5.Text = "Класс с самой высокой успеваемостью по всем предметам";
+            btnRequest5.UseVisualStyleBackColor = true;
+            btnRequest5.Click += btnRequest5_Click;
             // 
-            // Id_students
+            // btnRequest6
             // 
-            Id_students.HeaderText = "id";
-            Id_students.Name = "Id_students";
-            Id_students.ReadOnly = true;
-            Id_students.Width = 42;
-            // 
-            // FirstName
-            // 
-            FirstName.HeaderText = "Имя";
-            FirstName.Name = "FirstName";
-            FirstName.ReadOnly = true;
-            FirstName.Width = 56;
-            // 
-            // LastName
-            // 
-            LastName.HeaderText = "Фамилия";
-            LastName.Name = "LastName";
-            LastName.ReadOnly = true;
-            LastName.Width = 83;
-            // 
-            // ClassNumber
-            // 
-            ClassNumber.HeaderText = "Класс";
-            ClassNumber.Name = "ClassNumber";
-            ClassNumber.ReadOnly = true;
-            ClassNumber.Width = 64;
-            // 
-            // Grades
-            // 
-            Grades.HeaderText = "Оценки";
-            Grades.Name = "Grades";
-            Grades.ReadOnly = true;
-            Grades.Width = 74;
-            // 
-            // ClassName
-            // 
-            ClassName.HeaderText = "Класс";
-            ClassName.Name = "ClassName";
-            ClassName.ReadOnly = true;
-            ClassName.Width = 64;
-            // 
-            // Subjects
-            // 
-            Subjects.HeaderText = "Предметы";
-            Subjects.Name = "Subjects";
-            Subjects.ReadOnly = true;
-            Subjects.Width = 89;
+            btnRequest6.Location = new Point(12, 662);
+            btnRequest6.Name = "btnRequest6";
+            btnRequest6.Size = new Size(377, 23);
+            btnRequest6.TabIndex = 16;
+            btnRequest6.Text = "Класс с самой низкой успеваемостью по всем предметам";
+            btnRequest6.UseVisualStyleBackColor = true;
+            btnRequest6.Click += btnRequest6_Click;
             // 
             // MainForm
             // 
-            ClientSize = new Size(861, 711);
+            ClientSize = new Size(861, 688);
+            Controls.Add(btnRequest6);
+            Controls.Add(btnRequest5);
+            Controls.Add(btnRequest4);
+            Controls.Add(btnRequest3);
+            Controls.Add(btnRequest2);
             Controls.Add(btnDeleteClass);
             Controls.Add(btnAddClass);
             Controls.Add(comboBoxSubjects);
@@ -390,5 +450,10 @@
         private DataGridViewTextBoxColumn Grades;
         private DataGridViewTextBoxColumn ClassName;
         private DataGridViewTextBoxColumn Subjects;
+        private Button btnRequest2;
+        private Button btnRequest3;
+        private Button btnRequest4;
+        private Button btnRequest5;
+        private Button btnRequest6;
     }
 }
