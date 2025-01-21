@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using System.Data;
 
 namespace SchoolManagement
 {
@@ -230,6 +231,7 @@ namespace SchoolManagement
                     // Обновляем оценки ученика
                     selectedStudent.Grades = setRatingsForm.Ratings;
                     UpdateStudentGrid();
+                    btnSaveData_Click(sender, e);
                 }
             }
             else
@@ -240,12 +242,18 @@ namespace SchoolManagement
 
         private void btnRequest1_Click(object sender, EventArgs e)
         {
-
+           
         }
 
         private void btnRequest2_Click(object sender, EventArgs e)
         {
+            int count = dataGridStudents.Rows.Cast<DataGridViewRow>().Count(row =>
+            {
+                var grades = row.Cells["Grades"].Value.ToString().Split(new[] { ", " }, StringSplitOptions.None);
+                return grades.Any(g => g.Contains(":") && g.Split(':')[1].Trim() == "2");
+            });
 
+            MessageBox.Show(count.ToString());
         }
 
         private void btnRequest3_Click(object sender, EventArgs e)
@@ -255,7 +263,50 @@ namespace SchoolManagement
 
         private void btnRequest4_Click(object sender, EventArgs e)
         {
+            CalculateAverageGradeByClass();
+        }
 
+        private void CalculateAverageGradeByClass()
+        {
+            // Словарь для хранения сумм оценок и количества предметов по классам
+            var classGrades = new Dictionary<string, (double totalGrades, int totalSubjects)>();
+
+            foreach (DataGridViewRow row in dataGridStudents.Rows)
+            {
+                if (row.Cells["ClassNumber"].Value != null && row.Cells["Grades"].Value != null)
+                {
+                    string classNumber = row.Cells["ClassNumber"].Value.ToString();
+                    string grades = row.Cells["Grades"].Value.ToString();
+                    string[] subjects = grades.Split(',');
+
+                    foreach (string subject in subjects)
+                    {
+                        string[] parts = subject.Split(':');
+                        if (parts.Length == 2 && double.TryParse(parts[1].Trim(), out double grade))
+                        {
+                            // Если класс еще не добавлен в словарь, добавляем его
+                            if (!classGrades.ContainsKey(classNumber))
+                            {
+                                classGrades[classNumber] = (0, 0);
+                            }
+
+                            // Обновляем сумму оценок и количество предметов для данного класса
+                            classGrades[classNumber] = (classGrades[classNumber].totalGrades + grade, classGrades[classNumber].totalSubjects + 1);
+                        }
+                    }
+                }
+            }
+
+            // Формируем сообщение с результатами
+            string resultMessage = "Средняя оценка по всем предметам в каждом классе:\n";
+            foreach (var entry in classGrades)
+            {
+                string classNumber = entry.Key;
+                double averageGrade = entry.Value.totalSubjects > 0 ? entry.Value.totalGrades / entry.Value.totalSubjects : 0;
+                resultMessage += $"Класс {classNumber}: {averageGrade:F2}\n";
+            }
+
+            MessageBox.Show(resultMessage);
         }
 
         private void btnRequest5_Click(object sender, EventArgs e)

@@ -22,19 +22,14 @@ namespace SchoolManagement
         private void LoadSubjects(DataGridView dataGridClasses)
         {
             var subjects = new HashSet<string>();
-
             foreach (DataGridViewRow row in dataGridClasses.Rows)
             {
                 if (row.Cells["Subjects"].Value != null)
                 {
-                    var subjectList = row.Cells["Subjects"].Value.ToString().Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
-                    foreach (var subject in subjectList)
-                    {
-                        subjects.Add(subject.Trim());
-                    }
+                    string subjectList = row.Cells["Subjects"].Value.ToString();
+                    subjects.UnionWith(subjectList.Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries).Select(s => s.Trim()));
                 }
             }
-
             // Заполнение списка предметов
             lstSubjects.Items.AddRange(subjects.ToArray());
         }
@@ -57,12 +52,6 @@ namespace SchoolManagement
             NewTeacher = new Teacher(fullName, subjects, roomNumber);
             this.DialogResult = DialogResult.OK;
             this.Close();
-        }
-
-        private void btnAddSubject_Click(object sender, EventArgs e)
-        {
-            // Удалите этот метод, если больше не нужно добавлять предметы вручную
-            MessageBox.Show("Выберите предметы из списка.", "Информация", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }
 }

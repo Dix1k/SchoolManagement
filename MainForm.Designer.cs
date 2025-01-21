@@ -41,7 +41,6 @@
             btnLoadData = new Button();
             btnSetRatings = new Button();
             btnRequest1 = new Button();
-            comboBoxSubjects = new ComboBox();
             btnAddClass = new Button();
             btnDeleteClass = new Button();
             btnRequest2 = new Button();
@@ -49,6 +48,7 @@
             btnRequest4 = new Button();
             btnRequest5 = new Button();
             btnRequest6 = new Button();
+            listBoxSubjects = new ListBox();
             tabControl.SuspendLayout();
             tabTeachers.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridTeachers).BeginInit();
@@ -309,14 +309,6 @@
             btnRequest1.UseVisualStyleBackColor = true;
             btnRequest1.Click += btnRequest1_Click;
             // 
-            // comboBoxSubjects
-            // 
-            comboBoxSubjects.FormattingEnabled = true;
-            comboBoxSubjects.Location = new Point(681, 547);
-            comboBoxSubjects.Name = "comboBoxSubjects";
-            comboBoxSubjects.Size = new Size(121, 23);
-            comboBoxSubjects.TabIndex = 9;
-            // 
             // btnAddClass
             // 
             btnAddClass.Location = new Point(10, 468);
@@ -387,9 +379,19 @@
             btnRequest6.UseVisualStyleBackColor = true;
             btnRequest6.Click += btnRequest6_Click;
             // 
+            // listBoxSubjects
+            // 
+            listBoxSubjects.FormattingEnabled = true;
+            listBoxSubjects.ItemHeight = 15;
+            listBoxSubjects.Location = new Point(681, 546);
+            listBoxSubjects.Name = "listBoxSubjects";
+            listBoxSubjects.Size = new Size(120, 109);
+            listBoxSubjects.TabIndex = 17;
+            // 
             // MainForm
             // 
             ClientSize = new Size(861, 688);
+            Controls.Add(listBoxSubjects);
             Controls.Add(btnRequest6);
             Controls.Add(btnRequest5);
             Controls.Add(btnRequest4);
@@ -397,7 +399,6 @@
             Controls.Add(btnRequest2);
             Controls.Add(btnDeleteClass);
             Controls.Add(btnAddClass);
-            Controls.Add(comboBoxSubjects);
             Controls.Add(btnRequest1);
             Controls.Add(btnSetRatings);
             Controls.Add(tabControl);
@@ -434,7 +435,6 @@
         private System.Windows.Forms.Button btnLoadData;
         private Button btnSetRatings;
         private Button btnRequest1;
-        private ComboBox comboBoxSubjects;
         private TabPage tabClasses;
         private DataGridView dataGridClasses;
         private Button btnAddClass;
@@ -455,5 +455,6 @@
         private Button btnRequest4;
         private Button btnRequest5;
         private Button btnRequest6;
+        private ListBox listBoxSubjects;
     }
 }
