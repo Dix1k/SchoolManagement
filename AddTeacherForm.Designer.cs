@@ -45,7 +45,7 @@
             lstSubjects.Location = new Point(10, 39);
             lstSubjects.Name = "lstSubjects";
             lstSubjects.SelectionMode = SelectionMode.MultiExtended;
-            lstSubjects.Size = new Size(200, 109);
+            lstSubjects.Size = new Size(200, 124);
             lstSubjects.TabIndex = 6;
             // 
             // numRoomNumber

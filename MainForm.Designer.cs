@@ -383,14 +383,14 @@
             // 
             listBoxSubjects.FormattingEnabled = true;
             listBoxSubjects.ItemHeight = 15;
-            listBoxSubjects.Location = new Point(681, 546);
+            listBoxSubjects.Location = new Point(466, 575);
             listBoxSubjects.Name = "listBoxSubjects";
-            listBoxSubjects.Size = new Size(120, 109);
+            listBoxSubjects.Size = new Size(176, 139);
             listBoxSubjects.TabIndex = 17;
             // 
             // MainForm
             // 
-            ClientSize = new Size(861, 688);
+            ClientSize = new Size(861, 693);
             Controls.Add(listBoxSubjects);
             Controls.Add(btnRequest6);
             Controls.Add(btnRequest5);

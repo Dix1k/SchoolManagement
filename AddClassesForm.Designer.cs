@@ -66,14 +66,14 @@
             // 
             listBoxSubjects.FormattingEnabled = true;
             listBoxSubjects.ItemHeight = 15;
-            listBoxSubjects.Location = new Point(136, 41);
+            listBoxSubjects.Location = new Point(177, 41);
             listBoxSubjects.Name = "listBoxSubjects";
-            listBoxSubjects.Size = new Size(120, 229);
+            listBoxSubjects.Size = new Size(163, 229);
             listBoxSubjects.TabIndex = 3;
             // 
             // btnRemoveSubject
             // 
-            btnRemoveSubject.Location = new Point(265, 41);
+            btnRemoveSubject.Location = new Point(93, 41);
             btnRemoveSubject.Name = "btnRemoveSubject";
             btnRemoveSubject.Size = new Size(75, 23);
             btnRemoveSubject.TabIndex = 4;
