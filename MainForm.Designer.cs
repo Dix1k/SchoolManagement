@@ -92,6 +92,7 @@
             dataGridTeachers.Dock = DockStyle.Fill;
             dataGridTeachers.EnableHeadersVisualStyles = false;
             dataGridTeachers.Location = new Point(0, 0);
+            dataGridTeachers.MultiSelect = false;
             dataGridTeachers.Name = "dataGridTeachers";
             dataGridTeachers.ReadOnly = true;
             dataGridTeachers.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
@@ -149,6 +150,7 @@
             dataGridStudents.Dock = DockStyle.Fill;
             dataGridStudents.EnableHeadersVisualStyles = false;
             dataGridStudents.Location = new Point(0, 0);
+            dataGridStudents.MultiSelect = false;
             dataGridStudents.Name = "dataGridStudents";
             dataGridStudents.ReadOnly = true;
             dataGridStudents.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
@@ -214,6 +216,7 @@
             dataGridClasses.Columns.AddRange(new DataGridViewColumn[] { ClassName, Subjects });
             dataGridClasses.Dock = DockStyle.Fill;
             dataGridClasses.Location = new Point(0, 0);
+            dataGridClasses.MultiSelect = false;
             dataGridClasses.Name = "dataGridClasses";
             dataGridClasses.ReadOnly = true;
             dataGridClasses.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
